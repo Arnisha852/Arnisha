@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int Usermove, Computermove;
+    
+    while(1)
+    {
+        printf("\n Enter your move :\t 0 for Rock \t 1 for Paper \t 2 for Scissor \t 9 for exit : ");
+        scanf("%d" , &Usermove);
+        
+        Computermove = rand() %3;
+        
+        if (Usermove == 9){
+          break;
+        }
+        else if (Usermove == 0 && Computermove == 1 )
+        {
+            printf("\n The computer defeat you! \t Paper Beats Rock\n");
+        }
+        else if (Usermove == 0 && Computermove == 2 )
+        {
+            printf("\n You defeat the Computer! \t Rock Beats Scissor\n");
+        }
+        else if (Usermove == 1 && Computermove == 0)
+        {
+            printf("\n You defeat the Computer! \t Paper Beats Rock\n");
+        }
+        else if (Usermove == 1 && Computermove ==  2)
+        {
+            printf("\n The computer defeat you! \t Scissor Beats Paper\n");
+        }
+        else if (Usermove == 2 && Computermove == 0 )
+        {
+            printf("\n The computer defeat you! \t Rock Beats Scissor\n");
+        }
+        else if (Usermove == 2 && Computermove == 1 )
+        {
+            printf("\n You defeat the Computer! \t Scissor Beats Paper\n");
+        } 
+        else
+        {
+            printf(" \n OHH SHOOT SHOOT , IT's DRAW!\n");
+        }
+    }
+
+    return 0;
+}
