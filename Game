@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int usermove, computermove;
+    FILE *logFile;
+
+    logFile = fopen("game.txt", "a");
+    if (logFile == NULL)
+    {
+        printf("Error opening file\n");
+        return 1;
+    }
+
+    while (1)
+    {
+        printf("\n Enter your move : \t 0 for Rock \t 1 for Paper \t 2 for Scissor \t 9 to Exit : ");
+        scanf("%d", &usermove);
+
+        computermove = rand() % 3;
+
+        if (usermove == 9)
+        {
+            fprintf(logFile, "Game ended by user.\n");
+            fclose(logFile);
+            printf("Log saved to 'game.txt'.\n");
+            exit(0);
+        }
+        else if (usermove == 0 && computermove == 1)
+        {
+            printf("\n The Computer defeats you! \t Paper Beats Rock");
+            fprintf(logFile, "User: Rock, Computer: Paper -> Computer wins.\n");
+        }
+        else if (usermove == 0 && computermove == 2)
+        {
+            printf("\n You have defeated the computer! \t Rock Beats Scissor");
+            fprintf(logFile, "User: Rock, Computer: Scissor -> User wins.\n");
+        }
+        else if (usermove == 1 && computermove == 0)
+        {
+            printf("\n You have defeated the computer! \t Paper Beats Rock");
+            fprintf(logFile, "User: Paper, Computer: Rock -> User wins.\n");
+        }
+        else if (usermove == 1 && computermove == 2)
+        {
+            printf("\n The Computer defeats you! \t Scissor Beats Paper");
+            fprintf(logFile, "User: Paper, Computer: Scissor -> Computer wins.\n");
+        }
+        else if (usermove == 2 && computermove == 0)
+        {
+            printf("\n The Computer defeats you! \t Rock Beats Scissor");
+            fprintf(logFile, "User: Scissor, Computer: Rock -> Computer wins.\n");
+        }
+        else if (usermove == 2 && computermove == 1)
+        {
+            printf("\n You have defeated the computer! \t Scissor Beats Paper");
+            fprintf(logFile, "User: Scissor, Computer: Paper -> User wins.\n");
+        }
+        else if (usermove == computermove)
+        {
+            printf("\n OHH SHOOT SHOOT, It's a draw!");
+
+        }
+        else
+        {
+            printf("\n Invalid move. Please try again.");
+        }
+    }
+
+    fclose(logFile);
+    return 0;
+}
